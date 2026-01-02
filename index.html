@@ -9,6 +9,7 @@
         body {
             margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #000; color: white; text-align: center;
+            /* רקע של המקום */
             background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('background.jpg');
             background-size: cover; background-position: center; background-attachment: fixed;
             direction: rtl;
@@ -20,6 +21,7 @@
             margin: 30px auto; border: 1px solid #00d2ff; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
+        /* התמונה הקטנה שלך במרכז */
         .profile-pic {
             width: 110px; height: 110px; border-radius: 50%;
             border: 3px solid #00d2ff; object-fit: cover;
@@ -28,6 +30,7 @@
 
         h1 { color: #00d2ff; font-size: 1.8rem; margin: 10px 0; }
         
+        /* תיבת פרטים מיושרת לימין */
         .info-box { 
             background: rgba(255, 255, 255, 0.1); 
             padding: 15px; border-radius: 12px; margin-bottom: 20px; 
@@ -43,6 +46,7 @@
             font-family: inherit; text-align: right;
         }
 
+        /* יישור נקודות הבחירה לימין */
         .radio-group { display: flex; flex-direction: column; gap: 8px; }
         .radio-item { 
             background: #333; padding: 12px; border-radius: 8px; 
@@ -58,14 +62,11 @@
             cursor: pointer; font-size: 1.2rem; margin-top: 10px; 
         }
 
+        /* לחצן Waze בלבד */
         .waze-btn { 
-            display: block; background: #33ccff; color: white; padding: 12px; 
-            border-radius: 10px; text-decoration: none; font-weight: bold; margin-bottom: 15px;
-        }
-
-        .map-box { 
-            width: 100%; height: 250px; border-radius: 12px; 
-            margin-top: 20px; border: 1px solid #444;
+            display: block; background: #33ccff; color: white; padding: 15px; 
+            border-radius: 50px; text-decoration: none; font-weight: bold; 
+            font-size: 1.1rem; margin: 20px 0;
         }
 
         #successWindow { display: none; padding: 20px; }
@@ -80,16 +81,17 @@
 
         .footer-text { font-size: 0.9rem; color: #bbb; margin-top: 20px; line-height: 1.6; text-align: right; }
         
-        /* המשפט של המלך בעיצוב תנ"כי ומרכזי */
+        /* המשפט של המלך - באמצע ובכתב תנ"כי */
         .king-quote-biblical { 
             font-family: 'Frank Ruhl Libre', serif;
             color: #ffd700; 
-            margin-top: 20px; 
+            margin-top: 25px; 
             font-weight: bold; 
             font-size: 1.3rem; 
-            text-align: center; /* באמצע הדף */
-            padding-top: 10px;
+            text-align: center;
+            padding-top: 15px;
             display: block;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
     </style>
@@ -103,7 +105,7 @@
         <p>חוגגים את המעבר שלי לחילופי סטודנטים בבודפשט!</p>
 
         <div class="info-box">
-            📍 <b>מיקום:</b> סרף פארק (SRF PARK), לבני איתן 30, ת"א<br>
+            📍 <b>מיקום:</b> סרף פארק (SRF PARK TLV), לבני איתן 30, ת"א<br>
             📅 <b>תאריך:</b> יום שישי, 30.01.2026<br>
             ⏰ <b>שעות:</b> 12:00 - 16:00
         </div>
@@ -144,18 +146,12 @@
 
         <div id="successWindow">
             <h2 style="color: #00ffcc;">יש! התשובה נשמרה 🎉</h2>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D+%D7%9E%D7%99%D7%95%D7%91%D7%99+%D7%A9%D7%95%D7%A7%D7%99+%D7%A4%D7%A8%D7%92&dates=20260130T100000Z/20260130T140000Z&details=%D7%97%D7%99%D7%9C%D7%95%D7%A4%D7%99+%D7%A1%D7%98%D7%95%D7%93%D7%A0%D7%98%D7%99%D7%9D+%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98!&location=SRF+PARK+TLV" target="_blank" class="cal-btn">🗓️ הוספה ליומן גוגל</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D+%D7%9E%D7%99%D7%95%D7%91%D7%99+%D7%A9%D7%95%D7%A7%D7%99+%D7%A4%D7%A8%D7%92&dates=20260130T100000Z/20260130T140000Z&details=%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98+%D7%99%D7%94%D7%99%D7%94+%D7%A9%D7%9E%D7%97!&location=SRF+PARK+TLV" target="_blank" class="cal-btn">🗓️ הוספה ליומן גוגל</a>
             <br>
             <img src="funny.jpg" class="funny-img" alt="מצחיק">
         </div>
 
-        <div class="nav-links" style="margin-top: 20px;">
-            <a href="https://www.waze.com/ul?ll=32.043588,34.801642&navigate=yes" target="_blank" class="waze-btn">🚗 ניווט ב-Waze</a>
-        </div>
-
-        <iframe class="map-box" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!2sSRF%20PARK%20TLV!5m2!1she!2sil" 
-            allowfullscreen="" loading="lazy"></iframe>
+        <a href="https://www.waze.com/ul?ll=32.0437686,34.8015103&navigate=yes" target="_blank" class="waze-btn">🚗 ניווט ב-Waze ליעד</a>
 
         <div class="footer-text">
             * אל דאגה, יש חנייה בשפע במקום! 🅿️<br>
