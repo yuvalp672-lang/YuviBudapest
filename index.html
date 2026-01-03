@@ -6,158 +6,59 @@
     <title>נפרדים מיובי שוקי פרג!</title>
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* הגדרות בסיסיות למניעת בעיות במובייל */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-        }
-
+        html, body { margin: 0; padding: 0; width: 100%; overflow-x: hidden; direction: rtl; }
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #000;
-            color: white;
-            text-align: center;
-            direction: rtl;
-            
-            /* הגדרות רקע חסינות לנייד */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('background.jpg');
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: scroll; /* שינוי קריטי למובייל */
+            background-color: #000; color: white; text-align: right;
+            /* שינוי 1: רקע דומיננטי יותר (פחות כיסוי שחור) */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('background.jpg');
+            background-position: center center; background-repeat: no-repeat;
+            background-size: cover; background-attachment: scroll;
         }
-
         .container {
-            padding: 20px;
-            width: 88%;
-            max-width: 420px;
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.85);
+            padding: 25px; width: 90%; max-width: 420px; border-radius: 20px;
+            /* שינוי 2: רקע התיבה פחות כהה (יותר שקוף - 0.5 במקום 0.85) */
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            margin: 30px auto;
-            border: 1px solid #00d2ff;
-            box-sizing: border-box;
+            -webkit-backdrop-filter: blur(15px); margin: 30px auto; border: 1px solid #00d2ff;
+            box-sizing: border-box; text-align: right;
         }
-
         .profile-pic {
-            width: 110px; height: 110px;
-            border-radius: 50%;
-            border: 3px solid #00d2ff;
-            object-fit: cover;
-            margin: 0 auto 15px auto;
-            display: block;
+            width: 110px; height: 110px; border-radius: 50%;
+            border: 3px solid #00d2ff; object-fit: cover; margin: 0 auto 15px auto; display: block;
         }
-
-        h1 { color: #00d2ff; font-size: 1.7rem; margin: 10px 0; }
+        h1, p { text-align: center; margin: 10px 0; }
+        h1 { color: #00d2ff; font-size: 1.7rem; }
         
-        /* יישור פרטים לימין בקו אחד */
         .info-box { 
-            background: rgba(255, 255, 255, 0.1); 
-            padding: 15px; border-radius: 12px; margin-bottom: 20px; 
-            text-align: right; line-height: 1.8; border-right: 4px solid #00d2ff;
-            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 12px; 
+            margin-bottom: 20px; text-align: right; line-height: 1.8; border-right: 4px solid #00d2ff;
         }
-
-        .form-section { text-align: right; margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; color: #00d2ff; font-weight: bold; }
         
-        input, select { 
+        .form-section { margin-bottom: 20px; text-align: right; }
+        label { display: block; margin-bottom: 8px; color: #00d2ff; font-weight: bold; font-size: 1rem; }
+        
+        input[type="text"] { 
             width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; 
             background: #222; color: white; box-sizing: border-box; font-size: 1rem; text-align: right;
         }
 
+        .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 5px; }
         .radio-item { 
-            background: #333; padding: 12px; border-radius: 8px; margin-bottom: 8px;
-            display: flex; align-items: center; gap: 10px; justify-content: flex-start;
-            cursor: pointer;
+            background: rgba(51, 51, 51, 0.8); /* הבהרה קלה גם לרקע של התשובות */
+            padding: 12px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: flex-start;
+            cursor: pointer; transition: 0.2s;
         }
+        .radio-item input { margin-left: 12px; margin-right: 0; cursor: pointer; }
+        .radio-item span { font-size: 1rem; color: white; }
 
         .submit-btn { 
             background: #00d2ff; color: #000; border: none; padding: 16px; 
-            width: 100%; border-radius: 30px; font-weight: bold; 
-            cursor: pointer; font-size: 1.2rem; margin-top: 10px;
+            width: 100%; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 1.2rem;
+            margin-top: 10px;
         }
-
-        .waze-btn { 
-            display: block; background: #33ccff; color: white; padding: 15px; 
-            border-radius: 50px; text-decoration: none; font-weight: bold; margin: 20px 0;
-        }
-
-        #success { display: none; padding: 10px; }
-        .funny-img { width: 100%; border-radius: 12px; margin-top: 15px; }
-
-        .footer-text { font-size: 0.9rem; color: #bbb; margin-top: 20px; text-align: right; }
         
-        /* המשפט של המלך - באמצע ותנ"כי */
-        .king-quote { 
-            font-family: 'Frank Ruhl Libre', serif;
-            color: #ffd700; margin-top: 30px; font-weight: bold; 
-            font-size: 1.3rem; text-align: center;
-            border-top: 1px solid rgba(255, 215, 0, 0.2); padding-top: 20px;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <img src="profile.jpg" class="profile-pic" alt="יובי">
-
-        <h1>נפרדים מיובי שוקי פרג 🏄‍♂️</h1>
-        
-        <div class="info-box">
-            📍 <b>מיקום:</b> סרף פארק (SRF PARK TLV), לבני איתן 30, ת"א<br>
-            📅 <b>תאריך:</b> יום שישי, 30.01.2026<br>
-            ⏰ <b>שעות:</b> 12:00 - 16:00
-        </div>
-
-        <form id="rsvpForm">
-            <div class="form-section">
-                <label>שם מלא *</label>
-                <input type="text" name="name" required>
-            </div>
-
-            <div class="form-section">
-                <label>נראה אתכם? *</label>
-                <div class="radio-item"><input type="radio" name="go" value="כן" required><span>ברור!</span></div>
-                <div class="radio-item"><input type="radio" name="go" value="לא"><span>לא יכול/ה</span></div>
-            </div>
-
-            <button type="submit" class="submit-btn">שלח תשובה</button>
-        </form>
-
-        <div id="success">
-            <h2 style="color: #00ffcc;">יש! התשובה נשמרה 🎉</h2>
-            <img src="funny.jpg" class="funny-img">
-        </div>
-
-        <a href="https://www.waze.com/ul?ll=32.0437686,34.8015103&navigate=yes" target="_blank" class="waze-btn">🚗 ניווט ב-Waze ליעד</a>
-
-        <div class="footer-text">
-            * יש חנייה בשפע במקום! 🅿️<br>
-            * תבואו לקצרה אפילו רק לחיבוק.
-        </div>
-        
-        <div class="king-quote">״אריה לא צריך לשאוג כדי שידעו שהוא המלך״</div>
-    </div>
-
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycby88U8IhOHoiMZjLbexr9E0HYHHcYddp8yyGm0FyDHJvYju1NjcL_LiYI4CGyaXLxSdPA/exec';
-        const form = document.getElementById('rsvpForm');
-        const successDiv = document.getElementById('success');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(() => {
-                    form.style.display = 'none';
-                    successDiv.style.display = 'block';
-                })
-                .catch(() => alert('שגיאה בשליחה'));
-        });
-    </script>
-</body>
-</html>
+        .cal-btn { 
+            display: inline-block; background: #fff; color: #000; padding: 12px 25px; 
+            border-radius: 25px; text-decoration: none; font-weight: bold; margin: 15px 0; text-align: center;
