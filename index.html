@@ -6,49 +6,26 @@
     <title>נפרדים מיובי שוקי פרג!</title>
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* איפוס כללי למניעת גלילה מיותרת */
         * { box-sizing: border-box; }
-        
-        html, body { 
-            margin: 0; padding: 0; width: 100%; min-height: 100%; 
-            overflow-x: hidden; direction: rtl; 
-        }
-
+        html, body { margin: 0; padding: 0; width: 100%; min-height: 100%; overflow-x: hidden; direction: rtl; }
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #000; color: white;
-            /* רקע דומיננטי אך מאוזן */
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('background.jpg');
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: scroll; /* הכי בטוח למובייל */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('background.jpg');
+            background-position: center center; background-repeat: no-repeat;
+            background-size: cover; background-attachment: scroll;
+            display: flex; flex-direction: column; align-items: center;
         }
-
         .container {
-            padding: 25px; 
-            width: 92%; 
-            max-width: 420px; 
-            border-radius: 20px;
-            /* רקע חצי שקוף שמאפשר לראות את התמונה מאחור */
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); 
-            margin: 25px auto; 
-            border: 1px solid rgba(0, 210, 255, 0.5);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            text-align: right;
+            padding: 25px; width: 92%; max-width: 420px; border-radius: 20px;
+            background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); margin: 25px auto; 
+            border: 1px solid rgba(0, 210, 255, 0.4); text-align: right;
         }
-
         .profile-pic {
             width: 100px; height: 100px; border-radius: 50%;
-            border: 3px solid #00d2ff; object-fit: cover; 
-            margin: 0 auto 15px auto; display: block;
+            border: 3px solid #00d2ff; object-fit: cover; margin: 0 auto 15px auto; display: block;
         }
-
         h1 { color: #00d2ff; font-size: 1.6rem; text-align: center; margin: 10px 0; }
         .sub-title { text-align: center; margin-bottom: 20px; font-size: 1.1rem; }
         
@@ -56,47 +33,39 @@
             background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 12px; 
             margin-bottom: 20px; line-height: 1.7; border-right: 4px solid #00d2ff;
         }
-        
         .form-section { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; color: #00d2ff; font-weight: bold; }
         
-        input[type="text"] { 
+        input[type="text"], select { 
             width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #444; 
-            background: rgba(34, 34, 34, 0.8); color: white; font-size: 1rem; text-align: right;
+            background: rgba(34, 34, 34, 0.9); color: white; font-size: 1rem; text-align: right;
         }
-
         .radio-group { display: flex; flex-direction: column; gap: 10px; }
         .radio-item { 
             background: rgba(255, 255, 255, 0.08); padding: 12px; border-radius: 10px;
             display: flex; align-items: center; cursor: pointer;
         }
         .radio-item input { margin-left: 12px; width: 18px; height: 18px; }
-
         .submit-btn { 
             background: #00d2ff; color: #000; border: none; padding: 16px; 
             width: 100%; border-radius: 30px; font-weight: bold; cursor: pointer; 
-            font-size: 1.2rem; margin-top: 10px; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            font-size: 1.2rem; margin-top: 10px;
         }
-        
         .waze-btn { 
             display: block; background: #33ccff; color: white; padding: 15px; 
             border-radius: 50px; text-decoration: none; font-weight: bold; 
             margin: 15px 0; text-align: center;
         }
-
         .cal-btn { 
             display: inline-block; background: #fff; color: #000; padding: 12px 25px; 
             border-radius: 25px; text-decoration: none; font-weight: bold; margin: 15px 0;
         }
-        
         #success { display: none; padding: 10px; text-align: center; }
-        
         .footer-text { font-size: 0.85rem; color: #ccc; margin-top: 20px; line-height: 1.5; }
-        
         .king-quote { 
             font-family: 'Frank Ruhl Libre', serif; color: #ffd700; margin-top: 30px; 
             font-weight: bold; font-size: 1.25rem; text-align: center;
-            border-top: 1px solid rgba(255, 215, 0, 0.3); padding-top: 20px; width: 100%;
+            border-top: 1px solid rgba(255, 215, 0, 0.3); padding-top: 20px;
         }
     </style>
 </head>
@@ -116,6 +85,16 @@
             <div class="form-section">
                 <label>שם מלא *</label>
                 <input type="text" name="name" placeholder="איך קוראים לך?" required>
+            </div>
+
+            <div class="form-section">
+                <label>כמה אנשים תהיו? *</label>
+                <select name="guests">
+                    <option value="1">מגיע/ה לבד</option>
+                    <option value="2">אנחנו 2</option>
+                    <option value="3">אנחנו 3</option>
+                    <option value="4+">4 ומעלה</option>
+                </select>
             </div>
             
             <div class="form-section">
