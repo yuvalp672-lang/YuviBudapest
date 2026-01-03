@@ -62,3 +62,80 @@
         .cal-btn { 
             display: inline-block; background: #fff; color: #000; padding: 12px 25px; 
             border-radius: 25px; text-decoration: none; font-weight: bold; margin: 15px 0; text-align: center;
+        }
+        
+        .waze-btn { 
+            display: block; background: #33ccff; color: white; padding: 15px; 
+            border-radius: 50px; text-decoration: none; font-weight: bold; margin: 20px 0; text-align: center;
+        }
+        
+        #success { display: none; padding: 10px; text-align: center; }
+        
+        .footer-text { font-size: 0.9rem; color: #bbb; margin-top: 20px; text-align: right; line-height: 1.6; }
+        
+        .king-quote { 
+            font-family: 'Frank Ruhl Libre', serif; color: #ffd700; margin-top: 30px; 
+            font-weight: bold; font-size: 1.3rem; text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2); padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="profile.jpg" class="profile-pic">
+        <h1>נפרדים מיובי שוקי פרג 🏄‍♂️</h1>
+        <p>חוגגים את המעבר שלי לחילופי סטודנטים בבודפשט!</p>
+        
+        <div class="info-box">
+            📍 <b>מיקום:</b> סרף פארק (SRF PARK TLV), לבני איתן 30, ת"א<br>
+            📅 <b>תאריך:</b> יום שישי, 30.01.2026<br>
+            ⏰ <b>שעות:</b> 12:00 - 16:00
+        </div>
+
+        <form id="rsvpForm">
+            <div class="form-section">
+                <label>שם מלא *</label>
+                <input type="text" name="name" placeholder="איך קוראים לך?" required>
+            </div>
+            
+            <div class="form-section">
+                <label>נראה אתכם? *</label>
+                <div class="radio-group">
+                    <label class="radio-item"><input type="radio" name="go" value="כן" required><span>ברור!</span></label>
+                    <label class="radio-item"><input type="radio" name="go" value="לא"><span>לא יכול/ה</span></label>
+                    <label class="radio-item"><input type="radio" name="go" value="אולי"><span>לא יודע/ת עדיין יחתיך ימלך</span></label>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">שלח תשובה</button>
+        </form>
+
+        <div id="success">
+            <h2 style="color: #00ffcc;">יש! התשובה נשמרה 🎉</h2>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D+%D7%9E%D7%99%D7%95%D7%91%D7%99+%D7%A9%D7%95%D7%A7%D7%99+%D7%A4%D7%A8%D7%92&dates=20260130T100000Z/20260130T140000Z&details=%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98+%D7%99%D7%94%D7%99%D7%94+%D7%A9%D7%9E%D7%97!&location=SRF+PARK+TLV" target="_blank" class="cal-btn">🗓️ הוספה ליומן גוגל</a>
+            <br>
+            <img src="funny.jpg" style="width:100%; border-radius:12px; margin-top:15px;">
+        </div>
+
+        <a href="https://www.waze.com/ul?ll=32.0437686,34.8015103&navigate=yes" target="_blank" class="waze-btn">🚗 ניווט ב-Waze ליעד</a>
+
+        <div class="footer-text">
+            * יש חנייה בשפע במקום! 🅿️<br>
+            * תבואו לקצרה אפילו רק לחיבוק.
+        </div>
+        <div class="king-quote">״אריה לא צריך לשאוג כדי שידעו שהוא המלך״</div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby88U8IhOHoiMZjLbexr9E0HYHHcYddp8yyGm0FyDHJvYju1NjcL_LiYI4CGyaXLxSdPA/exec';
+        document.getElementById('rsvpForm').addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
+            .then(() => { 
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
