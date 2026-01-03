@@ -2,80 +2,161 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>נפרדים מיובי שוקי פרג!</title>
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* הגדרות בסיסיות למניעת בעיות במובייל */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
         body {
-            margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif;
-            background-color: #000; color: white; text-align: center;
-            /* תיקון רקע לניידים */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('background.jpg');
-            background-position: center; background-repeat: no-repeat;
-            background-size: cover; background-attachment: scroll;
-            direction: rtl; min-height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            text-align: center;
+            direction: rtl;
+            
+            /* הגדרות רקע חסינות לנייד */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('background.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: scroll; /* שינוי קריטי למובייל */
         }
+
         .container {
-            padding: 25px; width: 90%; max-width: 450px; border-radius: 20px;
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
-            margin: 30px auto; border: 1px solid #00d2ff;
+            padding: 20px;
+            width: 88%;
+            max-width: 420px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            margin: 30px auto;
+            border: 1px solid #00d2ff;
+            box-sizing: border-box;
         }
+
         .profile-pic {
-            width: 110px; height: 110px; border-radius: 50%;
-            border: 3px solid #00d2ff; object-fit: cover;
-            margin: 0 auto 15px auto; display: block;
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            border: 3px solid #00d2ff;
+            object-fit: cover;
+            margin: 0 auto 15px auto;
+            display: block;
         }
+
+        h1 { color: #00d2ff; font-size: 1.7rem; margin: 10px 0; }
+        
+        /* יישור פרטים לימין בקו אחד */
         .info-box { 
-            background: rgba(255, 255, 255, 0.1); padding: 15px; border-radius: 12px; 
-            margin-bottom: 20px; text-align: right; line-height: 1.8; border-right: 4px solid #00d2ff;
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 15px; border-radius: 12px; margin-bottom: 20px; 
+            text-align: right; line-height: 1.8; border-right: 4px solid #00d2ff;
+            font-size: 0.95rem;
         }
+
+        .form-section { text-align: right; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #00d2ff; font-weight: bold; }
+        
+        input, select { 
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; 
+            background: #222; color: white; box-sizing: border-box; font-size: 1rem; text-align: right;
+        }
+
         .radio-item { 
             background: #333; padding: 12px; border-radius: 8px; margin-bottom: 8px;
-            cursor: pointer; display: flex; align-items: center; gap: 10px; justify-content: flex-start;
+            display: flex; align-items: center; gap: 10px; justify-content: flex-start;
+            cursor: pointer;
         }
-        .submit-btn { background: #00d2ff; color: #000; border: none; padding: 16px; width: 100%; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 1.2rem; }
-        .waze-btn { display: block; background: #33ccff; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 20px 0; }
-        .king-quote { font-family: 'Frank Ruhl Libre', serif; color: #ffd700; margin-top: 25px; font-weight: bold; font-size: 1.3rem; text-align: center; border-top: 1px solid rgba(255, 215, 0, 0.2); padding-top: 15px; }
+
+        .submit-btn { 
+            background: #00d2ff; color: #000; border: none; padding: 16px; 
+            width: 100%; border-radius: 30px; font-weight: bold; 
+            cursor: pointer; font-size: 1.2rem; margin-top: 10px;
+        }
+
+        .waze-btn { 
+            display: block; background: #33ccff; color: white; padding: 15px; 
+            border-radius: 50px; text-decoration: none; font-weight: bold; margin: 20px 0;
+        }
+
+        #success { display: none; padding: 10px; }
+        .funny-img { width: 100%; border-radius: 12px; margin-top: 15px; }
+
+        .footer-text { font-size: 0.9rem; color: #bbb; margin-top: 20px; text-align: right; }
+        
+        /* המשפט של המלך - באמצע ותנ"כי */
+        .king-quote { 
+            font-family: 'Frank Ruhl Libre', serif;
+            color: #ffd700; margin-top: 30px; font-weight: bold; 
+            font-size: 1.3rem; text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2); padding-top: 20px;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <img src="profile.jpg" class="profile-pic">
+        <img src="profile.jpg" class="profile-pic" alt="יובי">
+
         <h1>נפרדים מיובי שוקי פרג 🏄‍♂️</h1>
-        <p>חוגגים את המעבר שלי לחילופי סטודנטים בבודפשט!</p>
+        
         <div class="info-box">
             📍 <b>מיקום:</b> סרף פארק (SRF PARK TLV), לבני איתן 30, ת"א<br>
             📅 <b>תאריך:</b> יום שישי, 30.01.2026<br>
             ⏰ <b>שעות:</b> 12:00 - 16:00
         </div>
+
         <form id="rsvpForm">
-            <div style="text-align:right; margin-bottom:15px;"><label>שם מלא *</label><input type="text" name="name" style="width:100%; padding:10px; border-radius:8px; background:#222; color:white; border:1px solid #444;" required></div>
-            <div style="text-align:right; margin-bottom:15px;"><label>נראה אתכם? *</label>
+            <div class="form-section">
+                <label>שם מלא *</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="form-section">
+                <label>נראה אתכם? *</label>
                 <div class="radio-item"><input type="radio" name="go" value="כן" required><span>ברור!</span></div>
                 <div class="radio-item"><input type="radio" name="go" value="לא"><span>לא יכול/ה</span></div>
             </div>
+
             <button type="submit" class="submit-btn">שלח תשובה</button>
         </form>
-        <div id="success" style="display:none; padding:20px;">
+
+        <div id="success">
             <h2 style="color: #00ffcc;">יש! התשובה נשמרה 🎉</h2>
-            <img src="funny.jpg" style="width:100%; border-radius:12px; margin-top:15px;">
+            <img src="funny.jpg" class="funny-img">
         </div>
+
         <a href="https://www.waze.com/ul?ll=32.0437686,34.8015103&navigate=yes" target="_blank" class="waze-btn">🚗 ניווט ב-Waze ליעד</a>
-        <div style="text-align:right; font-size:0.9rem; color:#bbb;">
-            * יש חנייה בשפע! 🅿️<br>
+
+        <div class="footer-text">
+            * יש חנייה בשפע במקום! 🅿️<br>
             * תבואו לקצרה אפילו רק לחיבוק.
         </div>
+        
         <div class="king-quote">״אריה לא צריך לשאוג כדי שידעו שהוא המלך״</div>
     </div>
+
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycby88U8IhOHoiMZjLbexr9E0HYHHcYddp8yyGm0FyDHJvYju1NjcL_LiYI4CGyaXLxSdPA/exec';
-        document.getElementById('rsvpForm').addEventListener('submit', e => {
+        const form = document.getElementById('rsvpForm');
+        const successDiv = document.getElementById('success');
+
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
-            .then(() => { 
-                document.getElementById('rsvpForm').style.display = 'none';
-                document.getElementById('success').style.display = 'block';
-            });
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(() => {
+                    form.style.display = 'none';
+                    successDiv.style.display = 'block';
+                })
+                .catch(() => alert('שגיאה בשליחה'));
         });
     </script>
 </body>
