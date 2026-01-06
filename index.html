@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; width: 100%; min-height: 100%; overflow-x: hidden; direction: rtl; }
+        html, body { margin: 0; padding: 0; width: 100%; min-height: 100vh; overflow-x: hidden; direction: rtl; }
         
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #000; color: white;
-            /* שינוי 1: כמעט ללא שכבת שחור על התמונה כדי שתהיה בהירה ודומיננטית */
-            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('background.jpg');
+            /* שינוי קריטי: רקע בהיר ודומיננטי מאוד */
+            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('background.jpg');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -24,75 +24,76 @@
         }
 
         .container {
-            padding: 25px; 
+            padding: 30px 20px; 
             width: 92%; 
-            max-width: 420px; 
-            border-radius: 20px;
-            /* שינוי 2: תיבה שקופה מאוד (0.15) עם טשטוש רקע חזק כדי שיראו את התמונה */
-            background: rgba(255, 255, 255, 0.15); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); 
-            margin: 25px auto; 
+            max-width: 450px; 
+            border-radius: 25px;
+            /* תיבה שקופה במיוחד כדי לראות את הרקע */
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); 
+            margin: 20px auto; 
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             text-align: right;
         }
 
+        /* תמונת פרופיל מוגדלת */
         .profile-pic {
-            width: 100px; height: 100px; border-radius: 50%;
-            border: 3px solid #00d2ff; object-fit: cover; 
-            margin: 0 auto 15px auto; display: block;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 4px solid #00d2ff; object-fit: cover; 
+            margin: 0 auto 20px auto; display: block;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
         }
 
-        h1 { color: #00d2ff; font-size: 1.6rem; text-align: center; margin: 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-        .sub-title { text-align: center; margin-bottom: 20px; font-size: 1.1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        h1 { color: #00d2ff; font-size: 1.8rem; text-align: center; margin: 10px 0; text-shadow: 2px 2px 5px rgba(0,0,0,0.9); }
+        .sub-title { text-align: center; margin-bottom: 25px; font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
         
         .info-box { 
-            background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; 
-            margin-bottom: 20px; line-height: 1.7; border-right: 4px solid #00d2ff;
+            background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 12px; 
+            margin-bottom: 25px; line-height: 1.8; border-right: 5px solid #00d2ff;
         }
         
-        .form-section { margin-bottom: 18px; }
-        label { display: block; margin-bottom: 8px; color: #00d2ff; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+        label { display: block; margin-bottom: 8px; color: #00d2ff; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
         
         input[type="text"], select { 
-            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); 
-            background: rgba(0, 0, 0, 0.5); color: white; font-size: 1rem; text-align: right;
+            width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3); 
+            background: rgba(0, 0, 0, 0.6); color: white; font-size: 1.1rem; text-align: right;
+            margin-bottom: 20px;
         }
 
-        .radio-group { display: flex; flex-direction: column; gap: 10px; }
         .radio-item { 
-            background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5); padding: 14px; border-radius: 12px;
             display: flex; align-items: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 10px;
         }
-        .radio-item input { margin-left: 12px; width: 18px; height: 18px; }
+        .radio-item input { margin-left: 15px; width: 20px; height: 20px; }
 
         .submit-btn { 
-            background: #00d2ff; color: #000; border: none; padding: 16px; 
-            width: 100%; border-radius: 30px; font-weight: bold; cursor: pointer; 
-            font-size: 1.2rem; margin-top: 10px; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+            background: #00d2ff; color: #000; border: none; padding: 18px; 
+            width: 100%; border-radius: 40px; font-weight: bold; cursor: pointer; 
+            font-size: 1.3rem; margin-top: 15px; box-shadow: 0 5px 20px rgba(0, 210, 255, 0.5);
         }
         
         .waze-btn { 
-            display: block; background: #33ccff; color: white; padding: 15px; 
+            display: block; background: #33ccff; color: white; padding: 16px; 
             border-radius: 50px; text-decoration: none; font-weight: bold; 
-            margin: 15px 0; text-align: center; box-shadow: 0 4px 15px rgba(51, 204, 255, 0.3);
+            margin: 20px 0; text-align: center; font-size: 1.1rem;
         }
 
         .cal-btn { 
-            display: inline-block; background: #fff; color: #000; padding: 12px 25px; 
-            border-radius: 25px; text-decoration: none; font-weight: bold; margin: 15px 0;
+            display: inline-block; background: #fff; color: #000; padding: 14px 28px; 
+            border-radius: 30px; text-decoration: none; font-weight: bold; margin: 15px 0;
         }
         
         #success { display: none; padding: 10px; text-align: center; }
         
-        .footer-text { font-size: 0.85rem; color: #eee; margin-top: 20px; line-height: 1.5; text-shadow: 1px 1px 2px rgba(0,0,0,1); }
+        .footer-text { font-size: 0.95rem; color: #fff; margin-top: 25px; line-height: 1.6; text-shadow: 1px 1px 4px rgba(0,0,0,1); }
         
         .king-quote { 
-            font-family: 'Frank Ruhl Libre', serif; color: #ffd700; margin-top: 30px; 
-            font-weight: bold; font-size: 1.25rem; text-align: center;
-            border-top: 1px solid rgba(255, 215, 0, 0.5); padding-top: 20px; text-shadow: 1px 1px 3px rgba(0,0,0,1);
+            font-family: 'Frank Ruhl Libre', serif; color: #ffd700; margin-top: 35px; 
+            font-weight: bold; font-size: 1.4rem; text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.6); padding-top: 25px; text-shadow: 2px 2px 5px rgba(0,0,0,1);
         }
     </style>
 </head>
@@ -110,38 +111,30 @@
         </div>
 
         <form id="rsvpForm">
-            <div class="form-section">
-                <label>שם מלא *</label>
-                <input type="text" name="name" placeholder="איך קוראים לך?" required>
-            </div>
+            <label>שם מלא *</label>
+            <input type="text" name="name" placeholder="איך קוראים לך?" required>
 
-            <div class="form-section">
-                <label>כמה אנשים תהיו? *</label>
-                <select name="guests">
-                    <option value="1">מגיע/ה לבד</option>
-                    <option value="2">אנחנו 2</option>
-                    <option value="3">אנחנו 3</option>
-                    <option value="4+">4 ומעלה</option>
-                </select>
-            </div>
+            <label>כמה אנשים תהיו? *</label>
+            <select name="guests">
+                <option value="1">מגיע/ה לבד</option>
+                <option value="2">אנחנו 2</option>
+                <option value="3">אנחנו 3</option>
+                <option value="4+">4 ומעלה</option>
+            </select>
             
-            <div class="form-section">
-                <label>נראה אתכם? *</label>
-                <div class="radio-group">
-                    <label class="radio-item"><input type="radio" name="go" value="כן" required><span>ברור!</span></label>
-                    <label class="radio-item"><input type="radio" name="go" value="לא"><span>לא יכול/ה</span></label>
-                    <label class="radio-item"><input type="radio" name="go" value="אולי"><span>לא יודע/ת עדיין יחתיך ימלך</span></label>
-                </div>
-            </div>
+            <label>נראה אתכם? *</label>
+            <div class="radio-item"><input type="radio" name="go" value="כן" required><span>ברור!</span></div>
+            <div class="radio-item"><input type="radio" name="go" value="לא"><span>לא יכול/ה</span></div>
+            <div class="radio-item"><input type="radio" name="go" value="אולי"><span>לא יודע/ת עדיין יחתיך ימלך</span></div>
             
             <button type="submit" class="submit-btn">שלח תשובה</button>
         </form>
 
         <div id="success">
             <h2 style="color: #00ffcc;">יש! התשובה נשמרה 🎉</h2>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D+%D7%9E%D7%99%D7%95%D7%91%D7%99+%D7%A9%D7%95%D7%A7%D7%99+%D7%A4%D7%A8%D7%92&dates=20260129T203000/20260129T233000&details=%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98+%D7%99%D7%94%D7%99%D7%94+%D7%A9%D7%9E%D7%97!&location=%D7%A4%D7%90%D7%A8%D7%A7%D7%94+%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94+%D7%A4%D7%90%D7%A8%D7%A7%D7%A8" target="_blank" class="cal-btn">🗓️ הוספה ליומן גוגל</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D+%D7%9E%D7%99%D7%95%D7%91%D7%99+%D7%A9%D7%95%D7%A7%D7%99+%D7%A4%D7%A8%D7%92&dates=20260129T203000/20260129T233000&details=%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98+%D7%99%D7%94%D7%99%D7%94+%D7%A9%D7%9E%D7%97!&location=%D7%A4%D7%90%D7%A8%D7%A7%D7%A8+%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94" target="_blank" class="cal-btn">🗓️ הוספה ליומן גוגל</a>
             <br>
-            <img src="funny.jpg" style="width:100%; border-radius:12px; margin-top:15px; border: 1px solid #00ffcc;">
+            <img src="funny.jpg" style="width:100%; border-radius:15px; margin-top:20px; border: 2px solid #00ffcc;">
         </div>
 
         <a href="https://www.waze.com/ul?ll=32.1737352,34.8281984&navigate=yes" target="_blank" class="waze-btn">🚗 ניווט ב-Waze ליעד</a>
