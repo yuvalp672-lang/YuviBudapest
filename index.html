@@ -12,30 +12,17 @@
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #000; color: white;
-            /* רקע בהיר ודומיננטי */
-            background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('background.jpg');
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: scroll;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-image: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.25)), url('background.jpg');
+            background-position: center center; background-repeat: no-repeat;
+            background-size: cover; background-attachment: scroll;
+            display: flex; flex-direction: column; align-items: center;
         }
 
         .container {
-            padding: 30px 20px; 
-            width: 92%; 
-            max-width: 450px; 
-            border-radius: 25px;
-            /* תיבה שקופה במיוחד */
-            background: rgba(0, 0, 0, 0.4); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px); 
-            margin: 20px auto; 
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            text-align: right;
+            padding: 30px 20px; width: 92%; max-width: 450px; border-radius: 25px;
+            background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); margin: 20px auto; 
+            border: 1px solid rgba(255, 255, 255, 0.2); text-align: right;
         }
 
         .profile-pic {
@@ -53,7 +40,7 @@
             margin-bottom: 25px; line-height: 1.8; border-right: 5px solid #00d2ff;
         }
         
-        label { display: block; margin-bottom: 8px; color: #00d2ff; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
+        label { display: block; margin-bottom: 8px; color: #00d2ff; font-weight: bold; }
         
         input[type="text"], select { 
             width: 100%; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3); 
@@ -68,27 +55,28 @@
         }
         .radio-item input { margin-left: 15px; width: 20px; height: 20px; }
 
+        #guestSection { display: none; margin-top: 10px; }
+
         .submit-btn { 
             background: #00d2ff; color: #000; border: none; padding: 18px; 
             width: 100%; border-radius: 40px; font-weight: bold; cursor: pointer; 
-            font-size: 1.3rem; margin-top: 15px; box-shadow: 0 5px 20px rgba(0, 210, 255, 0.5);
+            font-size: 1.3rem; margin-top: 15px;
         }
         
         .waze-btn { 
             display: block; background: #33ccff; color: white; padding: 16px; 
             border-radius: 50px; text-decoration: none; font-weight: bold; 
-            margin: 20px 0; text-align: center; font-size: 1.1rem;
+            margin: 20px 0; text-align: center;
         }
 
         .cal-container { display: flex; flex-direction: column; gap: 10px; margin: 15px 0; }
         .cal-btn { 
             display: inline-block; background: #fff; color: #000; padding: 12px 20px; 
             border-radius: 30px; text-decoration: none; font-weight: bold; text-align: center;
-            font-size: 0.95rem; box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
         
         #success { display: none; padding: 10px; text-align: center; }
-        .footer-text { font-size: 0.95rem; color: #fff; margin-top: 25px; line-height: 1.6; text-shadow: 1px 1px 4px rgba(0,0,0,1); }
+        .footer-text { font-size: 0.95rem; color: #fff; margin-top: 25px; line-height: 1.6; }
         .king-quote { 
             font-family: 'Frank Ruhl Libre', serif; color: #ffd700; margin-top: 35px; 
             font-weight: bold; font-size: 1.4rem; text-align: center;
@@ -113,18 +101,20 @@
             <label>שם מלא *</label>
             <input type="text" name="name" placeholder="איך קוראים לך?" required>
 
-            <label>כמה אנשים תהיו? *</label>
-            <select name="guests">
-                <option value="1">מגיע/ה לבד</option>
-                <option value="2">אנחנו 2</option>
-                <option value="3">אנחנו 3</option>
-                <option value="4+">4 ומעלה</option>
-            </select>
-            
             <label>נראה אתכם? *</label>
             <div class="radio-item"><input type="radio" name="go" value="כן" required><span>ברור!</span></div>
             <div class="radio-item"><input type="radio" name="go" value="לא"><span>לא יכול/ה</span></div>
             <div class="radio-item"><input type="radio" name="go" value="אולי"><span>לא יודע/ת עדיין יחתיך ימלך</span></div>
+
+            <div id="guestSection">
+                <label id="guestLabel">כמה אנשים תהיו? *</label>
+                <select name="guests">
+                    <option value="1">מגיע/ה לבד</option>
+                    <option value="2">אנחנו 2</option>
+                    <option value="3">אנחנו 3</option>
+                    <option value="4+">4 ומעלה</option>
+                </select>
+            </div>
             
             <button type="submit" class="submit-btn">שלח תשובה</button>
         </form>
@@ -133,7 +123,6 @@
             <h2 style="color: #00ffcc;">יש! התשובה נשמרה 🎉</h2>
             <div class="cal-container">
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D+%D7%9E%D7%99%D7%95%D7%91%D7%99+%D7%A9%D7%95%D7%A7%D7%99+%D7%A4%D7%A8%D7%92&dates=20260129T203000/20260129T233000&details=%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98+%D7%99%D7%94%D7%99%D7%94+%D7%A9%D7%9E%D7%97!&location=%D7%A4%D7%90%D7%A8%D7%A7%D7%A8+%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94" target="_blank" class="cal-btn">📅 הוספה ליומן Google</a>
-                
                 <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260129T203000%0ADTEND:20260129T233000%0ASUMMARY:%D7%A0%D7%A4%D7%A8%D7%93%D7%99%D7%9D%20%D7%9E%D7%99%D7%95%D7%91%D7%99%20%D7%A9%D7%95%D7%A7%D7%99%20%D7%A4%D7%A8%D7%92%0ADESCRIPTION:%D7%97%D7%99%D7%9C%D7%95%D7%A4%D7%99%20%D7%A1%D7%98%D7%95%D7%93%D7%A0%D7%98%D7%99%D7%9D%20%D7%91%D7%91%D7%95%D7%93%D7%A4%D7%A9%D7%98!%0ALOCATION:%D7%A4%D7%90%D7%A8%D7%A7%D7%A8%2C%20%D7%A4%D7%90%D7%A8%D7%A7%20%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94%0AEND:VEVENT%0AEND:VCALENDAR" download="farewell_yuvi.ics" class="cal-btn">🍏 הוספה ליומן Apple</a>
             </div>
             <img src="funny.jpg" style="width:100%; border-radius:15px; margin-top:10px; border: 2px solid #00ffcc;">
@@ -150,11 +139,31 @@
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycby88U8IhOHoiMZjLbexr9E0HYHHcYddp8yyGm0FyDHJvYju1NjcL_LiYI4CGyaXLxSdPA/exec';
-        document.getElementById('rsvpForm').addEventListener('submit', e => {
+        const form = document.getElementById('rsvpForm');
+        const guestSection = document.getElementById('guestSection');
+        const guestLabel = document.getElementById('guestLabel');
+        const rsvpRadios = document.querySelectorAll('input[name="go"]');
+
+        // לוגיקת הצגת שאלת כמות האורחים
+        rsvpRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'כן') {
+                    guestSection.style.display = 'block';
+                    guestLabel.innerText = 'כמה אנשים תהיו? *';
+                } else if (radio.value === 'אולי') {
+                    guestSection.style.display = 'block';
+                    guestLabel.innerText = 'במידה ותגיעו, כמה תהיו? *';
+                } else {
+                    guestSection.style.display = 'none';
+                }
+            });
+        });
+
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            fetch(scriptURL, { method: 'POST', body: new FormData(e.target)})
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(() => { 
-                document.getElementById('rsvpForm').style.display = 'none';
+                form.style.display = 'none';
                 document.getElementById('success').style.display = 'block';
             });
         });
